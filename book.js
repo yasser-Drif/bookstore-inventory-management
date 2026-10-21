@@ -22,7 +22,7 @@ function menu(){
                 addbook();
                 break;
             case "2":
-                console.log("Display all books")
+                displayallbook();
                 break;
             case "3":
                 console.log("Search for a book by tittle")
@@ -276,7 +276,7 @@ function addbook(){
 
     }
     let quantity = Number(prompt("Enter the quantity: "));
-    while((isNaN(quantity)) || quantity <= 0){
+    while((isNaN(quantity)) || quantity <= 0 || !Number.isInteger(quantity)){
         console.log("Invalid choice! Try again. ")
         quantity = Number(prompt("Enter the quantity: "));
     }
@@ -309,4 +309,33 @@ console.log("===================================================================
 
 }
 
+
+
+function displayallbook(){
+    if(bookstock.length === 0){
+        console.log("========================================================================")
+        console.log("                  There are no books in stock.                          ")
+        console.log("========================================================================")
+        return;
+    }
+    // for(let i=0; i< bookstock.length; i++){
+    //     console.log("|========================================================================")
+    //     console.log("|Book's Id  : ", bookstock[i].id)
+    //     console.log("|Book's name: ", bookstock[i].name)    
+    //     console.log("|Author     : ", bookstock[i].author)
+    //     console.log("|Price      : ", bookstock[i].price)+"$"
+    //     console.log("|Quantity   : ", bookstock[i].quantity)
+    //     console.log("|========================================================================")
+    // }
+
+    bookstock.forEach((book)=>{
+        console.log("|========================================================================");
+        console.log("|Book's Id  : ", book.id);
+        console.log("|Book's name: ", book.name);
+        console.log("|Author     : ", book.author);
+        console.log("|Price      : ", book.price + "$");
+        console.log("|Quantity   : ", book.quantity);
+        console.log("|========================================================================");
+    });
+}
 menu();
