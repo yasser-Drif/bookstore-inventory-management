@@ -19,7 +19,7 @@ function menu(){
 
         switch(choice){
             case "1":
-                console.log(" Add a new book")
+                addbook();
                 break;
             case "2":
                 console.log("Display all books")
@@ -263,5 +263,50 @@ const bookstock = [
         quantity: 20
     }
 ];
+
+
+
+function addbook(){
+    let name = prompt("Enter the name of the book: ");
+    let author =prompt("Enter the Author name: ");
+    let price = Number(prompt("Enter the book price: "));
+    while((isNaN(price)) || (price <= 0)){
+        console.log("Invalid choice! Try again. ") 
+        price = Number(prompt("Enter the book price: "));
+
+    }
+    let quantity = Number(prompt("Enter the quantity: "));
+    while((isNaN(quantity)) || quantity <= 0){
+        console.log("Invalid choice! Try again. ")
+        quantity = Number(prompt("Enter the quantity: "));
+    }
+    let maxid=0;
+    for(let i=0;i<bookstock.length;i++){
+        if(maxid<bookstock[i].id){
+            maxid = bookstock[i].id;
+        }
+        
+    }
+
+    let newbook ={ 
+    id : ++maxid,
+    name : name,
+     author : author,
+     price :price,
+     quantity: quantity
+     }
+bookstock.push(newbook)
+
+console.log("========================================================================")
+console.log("                          New book added                                ")
+console.log("========================================================================")
+console.log(" ID      : " , newbook.id )
+console.log(" Name    : " , newbook.name)        
+console.log(" Author  : " , newbook.author) 
+console.log(" price   : " , newbook.price+"$")
+console.log(" Quantity: " , newbook.quantity  ) 
+console.log("========================================================================")
+
+}
 
 menu();
