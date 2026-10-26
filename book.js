@@ -25,10 +25,10 @@ function menu(){
                 displayallbook();
                 break;
             case "3":
-                console.log("Search for a book by tittle")
+                Searchbook();
                 break;
             case "4":
-                console.log("update book quantity")
+                newquantity();
                 break;
             case "5":
                 console.log("Delete a book")
@@ -337,5 +337,55 @@ function displayallbook(){
         console.log("|Quantity   : ", book.quantity);
         console.log("|========================================================================");
     });
+}
+
+function newquantity(){
+    let bookname = prompt("Enter the book name:");
+        let book = bookstock.find(function(book){
+            return book.name === bookname;
+            });
+        if(!book){
+            console.log("========================================================================")
+            console.log("                       This book does not exist.                        ")
+            console.log("========================================================================")
+            return;
+        }
+    let newquant = Number(prompt("Enter the new quantity:"));
+    while((isNaN(newquant)) || newquant <= 0 || !Number.isInteger(newquant)){
+        console.log("Invalid choice! Try again. ")
+        newquant = Number(prompt("Enter the new quantity: "));
+        }
+    
+        
+ 
+        
+        book.quantity = newquant;
+
+        console.log("========================================================================")
+        console.log("Update confirmed.");
+        console.log("Book: " + book.name);
+        console.log("New quantity: " + book.quantity);
+        console.log("========================================================================")
+
+    }
+function Searchbook(){
+    let tittle = prompt("Enter the book tittle: ")
+    let book = bookstock.find(function(book){
+        return book.name === tittle;
+    });
+     if(!book){
+            console.log("========================================================================")
+            console.log("                       This book does not exist.                        ")
+            console.log("========================================================================")
+            return;
+        }
+        console.log("|========================================================================");
+        console.log("|Book's Id  : ", book.id);
+        console.log("|Book's name: ", book.name);
+        console.log("|Author     : ", book.author);
+        console.log("|Price      : ", book.price + "$");
+        console.log("|Quantity   : ", book.quantity);
+        console.log("|========================================================================");
+
 }
 menu();
