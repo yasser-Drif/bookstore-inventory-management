@@ -1,5 +1,5 @@
 # bookstore-inventory-management
-Project Type: Educational Project
+Project Type: Educational JavaScript Console Application
 
 This is a fictional project developed for learning and practicing JavaScript programming. It simulates a bookstore inventory management system and is intended for educational purposes only.
 The project is built using JavaScript and Node.js and allows users to manage books through a console-based menu.
